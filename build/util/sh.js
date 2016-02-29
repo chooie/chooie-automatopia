@@ -7,23 +7,28 @@
 
 	var jake = require("jake");
 
-	exports.runMany = function(commands, successCallback, failureCallback) {
-		var stdout = [];
-		function serializedSh(command) {
-			if (command) {
-				run(command, function(oneStdout) {
-					stdout.push(oneStdout);
-					serializedSh(commands.shift());
-				}, failureCallback);
-			}
-			else {
-				successCallback(stdout);
-			}
-		}
-		serializedSh(commands.shift());
-	};
+  exports = {
+    runMany: runMany,
+    run: run
+  };
 
-	var run = exports.run = function(oneCommand, successCallback, failureCallback) {
+  function runMany(commands, successCallback, failureCallback) {
+    var stdout = [];
+    function serializedSh(command) {
+      if (command) {
+        run(command, function(oneStdout) {
+          stdout.push(oneStdout);
+          serializedSh(commands.shift());
+        }, failureCallback);
+      }
+      else {
+        successCallback(stdout);
+      }
+    }
+    serializedSh(commands.shift());
+  }
+
+  function run(oneCommand, successCallback, failureCallback) {
 		var stdout = "";
 		var child = jake.createExec(oneCommand);
 		child.on("stdout", function(data) {
@@ -42,6 +47,6 @@
 
 		console.log("> " + oneCommand);
 		child.run();
-	};
+	}
 
 }());

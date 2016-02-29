@@ -1,5 +1,5 @@
 // Copyright (c) 2012 Titanium I.T. LLC. All rights reserved. See LICENSE.txt for details.
-/*global desc, task, jake, fail, complete */
+/*global desc, task, fail, complete */
 
 // Integration build file. Automates the continuous integration process.
 

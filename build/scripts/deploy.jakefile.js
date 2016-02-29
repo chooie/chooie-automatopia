@@ -1,5 +1,5 @@
 // Copyright (c) 2012 Titanium I.T. LLC. All rights reserved. See LICENSE.txt for details.
-/*global desc, task, jake, fail, complete */
+/*global desc, task, fail, complete */
 
 // Release build file. Automates our deployment process.
 
@@ -15,7 +15,6 @@
 	var DEPLOY_HEAD = "git push -f heroku " + GIT_HEAD + ":master";
 	var ROLLBACK = "heroku rollback";
 
-	var http = require("http");
 	var sh = require("./../util/sh.js");
 	var build_command = require("./../config/build_command.js");
 	var paths = require("../config/paths.js");
@@ -113,7 +112,7 @@
 			});
 		}
 
-		function tagCommit(tagRoot) {
+		function tagCommit(/*tagRoot*/) {
 			var deployedAt = new Date();
 			var tagMessage = "Application successfully deployed at " + deployedAt.toUTCString() + "\nLocal time: " + deployedAt.toLocaleString();
 			var tagCommand = "git tag -a '" + tagName(deployedAt) + "' -m '" + tagMessage + "' " + commitToTag;
