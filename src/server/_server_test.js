@@ -4,7 +4,7 @@
 	"use strict";
 
 	var fs = require("fs");
-	var expect = require("expect.js");
+	var assert = require("../util/assert.js");
 	var server = require("./server.js");
 	var httpUtil = require("../__http_util.js");
 	var paths = require("../../build/config/paths.js");
@@ -34,8 +34,8 @@
 			httpUtil.getPage("http://localhost:5000/file.txt", testGotCorrectPage);
 
       function testGotCorrectPage(error, response, responseText) {
-        expect(response.statusCode).to.equal(200);
-        expect(responseText).to.equal(TEST_DATA);
+        assert(response.statusCode).to.equal(200);
+        assert(responseText).to.equal(TEST_DATA);
         done(error);
       }
 		});

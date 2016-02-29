@@ -6,7 +6,7 @@
 (function() {
 	"use strict";
 
-	var expect = require("expect.js");
+	var assert = require("./util/assert.js");
 	var child_process = require("child_process");
 	var fs = require("fs");
 	var procfile = require("procfile");
@@ -52,7 +52,7 @@
 
 		it("passes smoke tests", function(done) {
 			smoketest.runTests(BASE_URL, function(success) {
-				expect(success).to.be(true);
+				assert(success).to.be(true);
 				done();
 			});
 		});
