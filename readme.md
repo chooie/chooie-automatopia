@@ -5,6 +5,7 @@ This project seed differs from the original. It differs in:
 
 * JSHint config
 * Code Style
+* Server implementation - uses 'express'
 
 This repository contains build and test automation for JavaScript applications. It's intended as a starting point for your own JavaScript projects. It's best for standalone applications, not npm modules. It includes:
 
