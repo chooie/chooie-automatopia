@@ -11,12 +11,14 @@
 
 
 	    // frameworks to use
-	    frameworks: ['mocha', 'expect', 'commonjs'],
+	    frameworks: ['mocha', 'commonjs'],
 
 
 	    // list of files / patterns to load in the browser
 	    files: [
-	      'src/client/**/*.js'
+	      'src/client/**/*.js',
+        'src/shared/**/*.js',
+        'vendor/chai-2.1.0.js'
 	    ],
 
 
@@ -30,7 +32,9 @@
 	    // available preprocessors:
 			//  https://npmjs.org/browse/keyword/karma-preprocessor
 	    preprocessors: {
-		    'src/client/**/*.js': ['commonjs'],
+        'src/client/**/*.js': ['commonjs'],
+        'src/shared/**/*.js': ['commonjs'],
+        'vendor/chai-2.1.0.js': ['commonjs']
 	    },
 
 

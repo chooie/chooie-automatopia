@@ -1,13 +1,13 @@
 // Copyright (c) 2012 Titanium I.T. LLC. All rights reserved. See LICENSE.txt
 // for details.
-/* global describe, it, expect, beforeEach, mocha */
 (function() {
 	"use strict";
 
+  var assert = require("../shared/assert.js");
 	var example = require("./example.js");
 	var constants = require("./constants.js");
 
-	mocha.setup({ignoreLeaks: true});
+	//mocha.setup({ignoreLeaks: true});
 
 	describe("Text field validator", function() {
 
@@ -21,7 +21,7 @@
 		it("applies 'required' CSS class when field is empty", function() {
 			example.validateTextField(field);
 
-			expect(cssClass()).to.equal(constants.REQUIRED_FIELD_CLASS);
+			assert.equal(cssClass(),constants.REQUIRED_FIELD_CLASS);
 		});
 
 		it("removes 'required' CSS class when field is not empty", function() {
@@ -30,7 +30,7 @@
 
 			example.validateTextField(field);
 
-			expect(cssClass()).to.equal(null);
+			assert.equal(cssClass(), null);
 		});
 
 		// TODO: should preserve existing CSS classes

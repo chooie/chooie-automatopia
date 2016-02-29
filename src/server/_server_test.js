@@ -4,7 +4,7 @@
 	"use strict";
 
 	var fs = require("fs");
-	var assert = require("../util/assert.js");
+	var assert = require("../shared/assert.js");
 	var server = require("./server.js");
 	var httpUtil = require("../__http_util.js");
 	var paths = require("../../build/config/paths.js");

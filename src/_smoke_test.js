@@ -6,7 +6,7 @@
 (function() {
 	"use strict";
 
-	var assert = require("./util/assert.js");
+	var assert = require("./shared/assert.js");
 	var child_process = require("child_process");
 	var fs = require("fs");
 	var procfile = require("procfile");
