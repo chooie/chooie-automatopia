@@ -45,15 +45,23 @@
 		function onSuccess() {
 			console.log("Rollback complete.");
 			runSmokeTests(function(passed) {
-				if (passed) complete();
-				else fail("Rollback complete but application is still offline! Fix manually.");
+				if (passed) {
+					complete();
+				}
+				else {
+          fail("Rollback complete but application is still offline! Fix manually.");
+        }
 			});
 		}
 		function onFailure() {
 			console.log("Rollback failed.");
 			runSmokeTests(function(passed) {
-				if (passed) fail("Rollback failed but application is online.");
-				else fail("Rollback failed and application is still offline! Fix manually.");
+				if (passed) {
+          fail("Rollback failed but application is online.");
+        }
+				else {
+          fail("Rollback failed and application is still offline! Fix manually.");
+        }
 			});
 		}
 
@@ -63,7 +71,9 @@
 	desc("Smoke test release");
 	task("smoketest", function() {
 		runSmokeTests(function(passed) {
-			if (!passed) fail("Smoke tests failed");
+			if (!passed) {
+        fail("Smoke tests failed");
+      }
 			complete();
 		});
 	}, { async: true });
@@ -71,7 +81,9 @@
 	// Ensure that Git status is clean
 	task("git", function() {
 		run("git status --porcelain", function(stdout) {
-			if (stdout[0]) fail("Cannot deploy until all files checked into git (or added to .gitignore).");
+			if (stdout[0]) {
+        fail("Cannot deploy until all files checked into git (or added to .gitignore).");
+      }
 			complete();
 		});
 	}, { async: true });
@@ -100,15 +112,23 @@
 
 		function onSuccess() {
 			runSmokeTests(function(passed) {
-				if (passed) tagCommit();
-				else fail("Smoke test failed. Run rollback target.");
+				if (passed) {
+          tagCommit();
+        }
+				else {
+          fail("Smoke test failed. Run rollback target.");
+        }
 			});
 		}
 
 		function onFailure() {
 			runSmokeTests(function(passed) {
-				if (passed) fail("Deploy failed but application is still online.");
-				else fail("Deploy failed and application is offline. Run rollback target.");
+				if (passed) {
+          fail("Deploy failed but application is still online.");
+        }
+				else {
+          fail("Deploy failed and application is offline. Run rollback target.");
+        }
 			});
 		}
 
@@ -132,8 +152,12 @@
 	function runSmokeTests(callback) {
 		console.log("Testing release...");
 		smoketest.runTests(PRODUCTION_URL, function(passed) {
-			if (passed) console.log("Application online.");
-			else console.log("APPLICATION OFFLINE!");
+			if (passed) {
+        console.log("Application online.");
+      }
+			else {
+        console.log("APPLICATION OFFLINE!");
+      }
 			callback(passed);
 		});
 	}

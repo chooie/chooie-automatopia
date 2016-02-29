@@ -169,7 +169,9 @@
 	// Ensure there aren't any files that need to be checked in or ignored
 	task("status", function() {
 		run(["git status --porcelain"], function(stdout) {
-			if (stdout[0]) fail("Working directory contains changes. Commit or ignore them first.");
+			if (stdout[0]) {
+				fail("Working directory contains changes. Commit or ignore them first.");
+			}
 			complete();
 		});
 	}, {async:true});

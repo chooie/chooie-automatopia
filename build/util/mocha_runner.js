@@ -31,8 +31,12 @@
 
 		mocha.run(function(failures) {
 			restoreExceptionListeners(savedListeners);
-			if (failures) return failure("Tests failed");
-			else return success();
+			if (failures) {
+				return failure("Tests failed");
+			}
+			else {
+        return success();
+      }
 		});
 	};
 

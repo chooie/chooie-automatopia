@@ -24,7 +24,9 @@
 
 			child.stdout.setEncoding("utf8");
 			child.stdout.on("data", function(chunk) {
-				if (chunk.trim().indexOf("Server started") !== -1) return done();
+				if (chunk.trim().indexOf("Server started") !== -1) {
+					return done();
+				}
 			});
 
 			child.once("exit", function() {
@@ -33,7 +35,9 @@
 		});
 
 		afterEach(function(done) {
-			if (child === null) return done();
+			if (child === null) {
+        return done();
+      }
 
 			child.once("exit", function() {
 				done();
@@ -52,8 +56,11 @@
 			var file = fs.readFileSync("Procfile", "utf8");
 			var web = procfile.parse(file).web;
 			web.options = web.options.map(function(option) {
-				if (option === "$PORT") return PORT;
-				else return option;
+				if (option === "$PORT") {
+          return PORT;
+        } else {
+          return option;
+        }
 			});
 			return web;
 		}

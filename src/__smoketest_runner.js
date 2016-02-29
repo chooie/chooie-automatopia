@@ -10,7 +10,9 @@
 
 	exports.runTests = function(url, callback) {
 		checkMarker(url, HOME_PAGE_MARKER, function(foundMarker) {
-			if (!foundMarker) console.log("Did not find home page marker");
+			if (!foundMarker) {
+				console.log("Did not find home page marker");
+			}
 			callback(foundMarker);
 		});
 	};

@@ -28,32 +28,43 @@
 		};
 
 		var runKarma = runner.run.bind(runner);
-		if (config.singleRun) runKarma = server.start.bind(server);
+		if (config.singleRun) {
+			runKarma = server.start.bind(server);
+		}
 
 		var stdout = new CapturedStdout();
 		runKarma(config, function(exitCode) {
 			stdout.restore();
 
-			if (exitCode) return fail("Client tests failed (did you start the Karma server?)");
+			if (exitCode) {
+        return fail("Client tests failed (did you start the Karma server?)");
+      }
 			var browserMissing = checkRequiredBrowsers(options.browsers, stdout);
-			if (browserMissing && options.strict) return fail("Did not test all browsers");
-			if (stdout.capturedOutput.indexOf("TOTAL: 0 SUCCESS") !== -1) return fail("No tests were run!");
+			if (browserMissing && options.strict) {
+        return fail("Did not test all browsers");
+      }
+			if (stdout.capturedOutput.indexOf("TOTAL: 0 SUCCESS") !== -1) {
+        return fail("No tests were run!");
+      }
 
 			return success();
 		});
 	};
 
 	function checkRequiredBrowsers(requiredBrowsers, stdout) {
-		var browserMissing = false;
+		var browserIsMissing = false;
 		requiredBrowsers.forEach(function(browser) {
-			browserMissing = lookForBrowser(browser, stdout.capturedOutput) || browserMissing;
+      var browserIsFound = lookForBrowser(browser, stdout.capturedOutput);
+      browserIsMissing = browserIsFound || browserIsMissing;
 		});
-		return browserMissing;
+		return browserIsMissing;
 	}
 
 	function lookForBrowser(browser, output) {
 		var missing = output.indexOf(browser + ": Executed") === -1;
-		if (missing) console.log("Warning: " + browser + " was not tested!");
+		if (missing) {
+      console.log("Warning: " + browser + " was not tested!");
+    }
 		return missing;
 	}
 

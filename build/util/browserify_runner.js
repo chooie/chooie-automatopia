@@ -10,7 +10,9 @@ exports.bundle = function(config, success, failure) {
 
 	b.add(path.resolve(config.entry));
 	b.bundle(function(err, bundle) {
-		if (err) return failure(err);
+		if (err) {
+			return failure(err);
+		}
 		fs.writeFileSync(config.outfile, bundle);
 		return success();
 	});
