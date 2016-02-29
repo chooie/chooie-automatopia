@@ -3,7 +3,7 @@
 (function() {
   "use strict";
 
-  var assert = require("expect.js");
+  var assert = require("../../vendor/chai-2.1.0").assert;
 
   module.exports = assert;
 

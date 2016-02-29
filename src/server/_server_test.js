@@ -34,8 +34,8 @@
 			httpUtil.getPage("http://localhost:5000/file.txt", testGotCorrectPage);
 
       function testGotCorrectPage(error, response, responseText) {
-        assert(response.statusCode).to.equal(200);
-        assert(responseText).to.equal(TEST_DATA);
+        assert.equal(response.statusCode, 200);
+        assert.equal(responseText, TEST_DATA);
         done(error);
       }
 		});

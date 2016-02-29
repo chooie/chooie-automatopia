@@ -52,7 +52,7 @@
 
 		it("passes smoke tests", function(done) {
 			smoketest.runTests(BASE_URL, function(success) {
-				assert(success).to.be(true);
+				assert.ok(success);
 				done();
 			});
 		});
