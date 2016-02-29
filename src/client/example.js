@@ -1,4 +1,5 @@
-// Copyright (c) 2012 Titanium I.T. LLC. All rights reserved. See LICENSE.txt for details.
+// Copyright (c) 2012 Titanium I.T. LLC. All rights reserved. See LICENSE.txt
+// for details.
 
 // A silly little validator function. Just an example.
 

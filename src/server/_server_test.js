@@ -1,4 +1,5 @@
-// Copyright (c) 2012-2014 Titanium I.T. LLC. All rights reserved. See LICENSE.txt for details.
+// Copyright (c) 2012-2014 Titanium I.T. LLC. All rights reserved. See
+// LICENSE.txt for details.
 (function () {
 	"use strict";
 
@@ -30,11 +31,13 @@
 		});
 
 		it("responds to requests", function(done) {
-			httpUtil.getPage("http://localhost:5000/file.txt", function(error, response, responseText) {
-				expect(response.statusCode).to.equal(200);
-				expect(responseText).to.equal(TEST_DATA);
-				done(error);
-			});
+			httpUtil.getPage("http://localhost:5000/file.txt", testGotCorrectPage);
+
+      function testGotCorrectPage(error, response, responseText) {
+        expect(response.statusCode).to.equal(200);
+        expect(responseText).to.equal(TEST_DATA);
+        done(error);
+      }
 		});
 
 	});
