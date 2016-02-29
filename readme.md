@@ -1,10 +1,10 @@
-WordRoot
-========
+Chooie's Automatopia (Project Seed)
+===================================
 
-WordRoot teaches people the meaning of words and their roots.
+This project seed differs from the original. It differs in:
 
-Automatopia (Project Seed)
-==========================
+* JSHint config
+* Code Style
 
 This repository contains build and test automation for JavaScript applications. It's intended as a starting point for your own JavaScript projects. It's best for standalone applications, not npm modules. It includes:
 

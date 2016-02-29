@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/wordroot.iml" filepath="$PROJECT_DIR$/.idea/wordroot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../chooie-automatopia/.idea/wordroot.iml" filepath="$PROJECT_DIR$/../chooie-automatopia/.idea/wordroot.iml" />
     </modules>
   </component>
 </project>
