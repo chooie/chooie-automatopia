@@ -1,4 +1,5 @@
-// Copyright (c) 2012-2014 Titanium I.T. LLC. All rights reserved. See LICENSE.txt for details.
+// Copyright (c) 2012-2014 Titanium I.T. LLC. All rights reserved. See
+// LICENSE.txt for details.
 
 // Main build file. Contains all tasks needed for normal development.
 
@@ -38,7 +39,11 @@
 	desc("Start server (for manual testing)");
 	task("run", [ "build" ], function() {
 		console.log("Starting server. Press Ctrl-C to exit.");
-		jake.exec("node " + paths.distDir + "/run.js 5000", { interactive: true }, complete);
+		jake.exec(
+      "node " + paths.distDir + "/run.js 5000",
+      { interactive: true },
+      complete
+    );
 	}, { async: true });
 
 	desc("Delete generated files");
@@ -118,7 +123,10 @@
 
 	task("buildClient", [ paths.clientDistDir, "bundleClientJs" ], function() {
 		console.log("Copying client code: .");
-		shell.cp(paths.clientDir + "/*.html", paths.clientDir + "/*.css", paths.clientDistDir);
+		shell.cp(
+      paths.clientDir + "/*.html", paths.clientDir + "/*.css",
+      paths.clientDistDir
+    );
 	});
 
 	task("bundleClientJs", [ paths.clientDistDir ], function() {

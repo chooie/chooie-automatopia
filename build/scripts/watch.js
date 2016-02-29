@@ -1,4 +1,5 @@
-// Copyright (c) 2015 Titanium I.T. LLC. All rights reserved. For license, see "README" or "LICENSE" file.
+// Copyright (c) 2015 Titanium I.T. LLC. All rights reserved. For license, see
+// "README" or "LICENSE" file.
 
 // Automatically runs build when files change.
 
@@ -9,7 +10,8 @@
 	var buildCommand = require("../config/build_command.js");
 	var paths = require("../config/paths.js");
 
-	console.log("*** Using nodemon to run " + buildCommand.get() + ". Type 'rs<enter>' to force restart.");
+	console.log("*** Using nodemon to run " + buildCommand.get() +
+    ". Type 'rs<enter>' to force restart.");
 	nodemon({
 		ext: "sh bat json js html css",
 		ignore: paths.generatedDir,

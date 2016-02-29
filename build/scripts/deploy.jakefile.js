@@ -1,5 +1,6 @@
-// Copyright (c) 2012 Titanium I.T. LLC. All rights reserved. See LICENSE.txt for details.
-/*global desc, task, fail, complete */
+// Copyright (c) 2012 Titanium I.T. LLC. All rights reserved. See LICENSE.txt
+// for details.
+/* global desc, task, fail, complete */
 
 // Release build file. Automates our deployment process.
 
@@ -21,7 +22,8 @@
 	var smoketest = require("./../../src/__smoketest_runner.js");
 
 	task("default", function() {
-		console.log("This Jakefile deploys the application. Use -T option to see targets.\n");
+		console.log("This Jakefile deploys the application. Use -T option to see " +
+      "targets.\n");
 	});
 
 	desc("Deploy integration branch to Heroku");
@@ -49,7 +51,8 @@
 					complete();
 				}
 				else {
-          fail("Rollback complete but application is still offline! Fix manually.");
+          fail("Rollback complete but application is still offline! Fix " +
+            "manually.");
         }
 			});
 		}
@@ -60,7 +63,8 @@
           fail("Rollback failed but application is online.");
         }
 				else {
-          fail("Rollback failed and application is still offline! Fix manually.");
+          fail("Rollback failed and application is still offline! Fix " +
+            "manually.");
         }
 			});
 		}
@@ -82,7 +86,8 @@
 	task("git", function() {
 		run("git status --porcelain", function(stdout) {
 			if (stdout[0]) {
-        fail("Cannot deploy until all files checked into git (or added to .gitignore).");
+        fail("Cannot deploy until all files checked into git (or added to " +
+          ".gitignore).");
       }
 			complete();
 		});
@@ -97,7 +102,8 @@
 		], complete, onFailure);
 
 		function onFailure() {
-			fail("Unable to check in distribution files. Must be cleaned up manually.");
+			fail("Unable to check in distribution files. Must be cleaned up " +
+        "manually.");
 		}
 	}, { async: true });
 
@@ -127,15 +133,19 @@
           fail("Deploy failed but application is still online.");
         }
 				else {
-          fail("Deploy failed and application is offline. Run rollback target.");
+          fail("Deploy failed and application is offline. Run rollback " +
+            "target.");
         }
 			});
 		}
 
 		function tagCommit(/*tagRoot*/) {
 			var deployedAt = new Date();
-			var tagMessage = "Application successfully deployed at " + deployedAt.toUTCString() + "\nLocal time: " + deployedAt.toLocaleString();
-			var tagCommand = "git tag -a '" + tagName(deployedAt) + "' -m '" + tagMessage + "' " + commitToTag;
+			var tagMessage = "Application successfully deployed at " +
+        deployedAt.toUTCString() + "\nLocal time: " +
+        deployedAt.toLocaleString();
+			var tagCommand = "git tag -a '" + tagName(deployedAt) + "' -m '" +
+        tagMessage + "' " + commitToTag;
 
 			sh.run(tagCommand, complete, function() {
 				fail("Application deployed and online, but failed to tag repository.");
@@ -143,7 +153,8 @@
 		}
 
 		function tagName(date) {
-			var humanReadableDate = date.getFullYear() + "." + (date.getMonth() + 1) + "." + date.getDate() + "-";
+			var humanReadableDate = date.getFullYear() + "." + (date.getMonth() + 1) +
+        "." + date.getDate() + "-";
 			var timestamp = date.getTime();
 			return "deploy-" + humanReadableDate + timestamp;
 		}
