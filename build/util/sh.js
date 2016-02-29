@@ -7,7 +7,7 @@
 
 	var jake = require("jake");
 
-  exports = {
+  module.exports = {
     runMany: runMany,
     run: run
   };

@@ -1,4 +1,5 @@
-// Copyright (c) 2012 Titanium I.T. LLC. All rights reserved. See LICENSE.txt for details.
+// Copyright (c) 2012 Titanium I.T. LLC. All rights reserved. See LICENSE.txt
+// for details.
 
 // A cross-platform mechanism for determining how to run the build
 
@@ -11,7 +12,10 @@
 	var os = require("os");
 
 	exports.get = function() {
-		return os.platform() === "win32" ? WINDOWS_BUILD_COMMAND : UNIX_BUILD_COMMAND;
+		if (os.platform() === "win32") {
+      return WINDOWS_BUILD_COMMAND;
+    }
+    return UNIX_BUILD_COMMAND;
 	};
 
 }());
